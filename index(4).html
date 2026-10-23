@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chemistry SPM 2026 | Smart Performance Monitoring</title>
+<style>
+:root{--navy:#071126;--navy2:#101f3c;--blue:#2457d6;--cyan:#39c6e8;--gold:#e9bd58;--bg:#f3f6fb;--ink:#17243b;--muted:#70809a;--line:#e2e8f0;--white:#fff;--green:#14866d;--red:#c94747}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:650}button.secondary{background:#fff;color:var(--ink);border:1px solid #d6deea}button.gold{background:var(--gold);color:#17243b}button.danger{background:#fff0f0;color:#a52b2b;border:1px solid #ffd0d0}
+.topbar{background:#fff;border-bottom:1px solid var(--line);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:#fff;font-weight:900;letter-spacing:-1px}.brand b{display:block;font-size:15px}.brand small{color:var(--muted)}.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hero{background:radial-gradient(circle at 85% 10%,#183e79 0,#101e3d 30%,#071126 70%);color:#fff;padding:28px max(24px,calc((100vw - 1380px)/2));position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:320px;height:320px;border:1px solid #ffffff1a;border-radius:50%;right:8%;top:-180px;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff05}.eyebrow{font-size:11px;letter-spacing:3px;color:var(--cyan);font-weight:800}.hero h1{margin:7px 0;font-size:clamp(24px,3vw,36px);letter-spacing:-.7px}.hero p{margin:0;color:#b9c8e3;font-size:14px}.hero-meta{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.pill{border:1px solid #ffffff30;background:#ffffff0d;color:#e6edf9;padding:7px 10px;border-radius:30px;font-size:12px}
+.wrap{max-width:1380px;margin:auto;padding:24px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}.toolbar h2{font-size:22px;margin:0 0 4px}.toolbar p{margin:0;color:var(--muted);font-size:13px}.filters{display:flex;gap:8px;flex-wrap:wrap}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}.tab{background:#fff;border:1px solid #d9e1ed;color:#34445e;font-weight:600}.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 5px 18px #0d244208;min-width:0}.kpi-label{font-size:12px;color:var(--muted);margin-bottom:9px}.kpi-value{font-size:27px;font-weight:800;letter-spacing:-.6px}.kpi-foot{font-size:11px;color:var(--muted);margin-top:7px}.card-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.card-title h3{margin:0;font-size:15px}.card-title p{margin:5px 0 0;color:var(--muted);font-size:12px}.two-col{grid-template-columns:minmax(0,1.45fr) minmax(300px,1fr);margin-top:14px}.three-col{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:14px}.chart-wrap{height:290px;position:relative}.chart-wrap canvas{width:100%;height:100%;display:block}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}th{background:#f6f8fc;text-align:left;color:#44536b;font-weight:750}th,td{padding:12px 13px;border-bottom:1px solid #edf0f5}tbody tr:hover{background:#f8fbff}.badge{display:inline-block;border-radius:20px;padding:5px 8px;font-size:10px;font-weight:750}.b-green{background:#dff5ed;color:#11765d}.b-blue{background:#e4edff;color:#244fc2}.b-gold{background:#fff3d4;color:#8a6210}.b-red{background:#ffe5e5;color:#ad3030}.muted{color:var(--muted)}.small{font-size:12px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;font-size:12px;font-weight:700;color:#52627a;margin-bottom:6px}.field input,.field select{width:100%;padding:10px 11px;border:1px solid #d7dfeb;border-radius:9px;background:#fff;color:var(--ink)}.field input[type=number]{max-width:150px}.student-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.student-select{min-width:270px}.notice{border-radius:12px;padding:12px 14px;background:#fff8e6;border:1px solid #f4dfaa;color:#765516;font-size:12px;line-height:1.5;margin-bottom:14px}.status{font-size:12px;padding:7px 10px;border-radius:9px;background:#f1f5f9;color:#42536c}.status.ok{background:#e0f5ec;color:#146c52}.footer{text-align:center;color:#8290a5;font-size:11px;padding:26px 12px}.hidden{display:none!important}.empty{text-align:center;padding:30px;color:var(--muted)}.tag{display:inline-flex;gap:6px;align-items:center;font-size:11px;color:#50617a}.dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col,.three-col{grid-template-columns:1fr}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:16px}}
+@media(max-width:560px){.kpis{grid-template-columns:1fr 1fr}.kpi-value{font-size:22px}.form-grid{grid-template-columns:1fr}.wrap{padding:12px}.hero{padding:22px 16px}.topbar{padding:12px}.student-select{min-width:100%}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="brand"><div class="logo">C<span style="color:#f3d16d">+</span></div><div><b>CHEMISTRY SPM 2026</b><small>Smart Performance Monitoring System</small></div></div>
+ <div class="top-actions"><span id="connectionStatus" class="status">Viewer • sambungan diperlukan</span><button id="quickMarks" class="hidden" type="button">✎ Cipta Ujian / Edit Markah</button><button class="secondary" id="exportCsv">Eksport CSV</button><button class="gold" id="printBtn">Cetak laporan</button></div>
+</header>
+<section class="wrap" style="padding-bottom:0"><div class="card" id="cloudBox"><div class="card-title"><div><h3>Dashboard Viewer & Log Masuk Admin / Editor</h3><p>Viewer tidak memerlukan akaun. Masukkan Publishable Key projek sekali sahaja; Admin/Editor boleh log masuk di bawah. Jangan gunakan Secret Key atau service_role.</p></div></div><div class="form-grid"><div class="field"><label>Supabase Project URL</label><input id="cloudUrl" placeholder="https://xxxxx.supabase.co"></div><div class="field"><label>Publishable Key</label><input id="cloudKey" placeholder="sb_publishable_..."></div><div class="field"><label>E-mel guru</label><input id="cloudEmail" type="email" autocomplete="username"></div><div class="field"><label>Kata laluan</label><input id="cloudPassword" type="password" autocomplete="current-password"></div></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><button id="viewerConnect">Buka sebagai Viewer</button><button id="cloudConnect">Log Masuk Admin / Editor</button><button class="secondary" id="cloudLogout">Log Keluar</button><button class="secondary" id="cloudReload">Muat semula data awan</button></div><p id="cloudMessage" class="small muted" role="status"></p></div></section><section class="hero"><div class="eyebrow">MRSM MUKAH · PROGRAM POTENSI</div><h1>Dashboard Pemantauan Prestasi Kimia</h1><p>Pantau penguasaan topik, kemajuan individu dan fokus intervensi berasaskan data.</p><div class="hero-meta"><span class="pill">● Analisis pencapaian</span><span class="pill">● Profil individu</span><span class="pill">● Pemantauan intervensi</span><span class="pill">Tingkatan 4 & 5 · boleh dikembangkan</span></div></section>
+<main class="wrap">
+ <div class="toolbar"><div><h2 id="pageTitle">Ringkasan Prestasi</h2><p id="pageSub">Gambaran keseluruhan rekod markah Program POTENSI.</p></div><div class="filters"><select id="classFilter" aria-label="Kelas"><option value="POTENSI">Program POTENSI</option><option value="SEMUA">Semua kelas (apabila ditambah)</option></select><button class="secondary" id="refreshBtn">Muat semula</button></div></div>
+ <nav class="tabs">
+  <button class="tab active" data-page="overview">Ringkasan</button><button class="tab" data-page="students">Profil Pelajar</button><button class="tab" data-page="topics">Penguasaan Topik</button><button class="tab" data-page="marks">✎ Cipta Ujian / Edit Markah</button><button class="tab" data-page="intervention">Intervensi</button><button class="tab" data-page="settings">Tetapan & Data</button>
+ </nav>
+ <section id="page-overview">
+  <div class="grid kpis">
+   <div class="card"><div class="kpi-label">Pelajar berdaftar</div><div class="kpi-value" id="kpiStudents">30</div><div class="kpi-foot">Program POTENSI</div></div>
+   <div class="card"><div class="kpi-label">Rekod markah topik</div><div class="kpi-value" id="kpiRecords">0</div><div class="kpi-foot">Daripada jumlah slot topik pelajar</div></div>
+   <div class="card"><div class="kpi-label">Purata penguasaan</div><div class="kpi-value" id="kpiAverage">—</div><div class="kpi-foot">Berdasarkan markah topik yang direkod</div></div>
+   <div class="card"><div class="kpi-label">Perlu intervensi</div><div class="kpi-value" id="kpiIntervention">0</div><div class="kpi-foot">Rekod topik di bawah 50%</div></div>
+  </div>
+  <div class="grid two-col">
+   <div class="card"><div class="card-title"><div><h3>Purata pencapaian mengikut topik</h3><p>Peratus purata daripada rekod markah yang tersedia</p></div><span class="tag"><i class="dot"></i> Topik Kimia</span></div><div class="chart-wrap"><canvas id="topicChart"></canvas></div></div>
+   <div class="card"><div class="card-title"><div><h3>Taburan tahap penguasaan</h3><p>Agihan rekod topik mengikut kategori</p></div></div><div class="chart-wrap"><canvas id="pieChart"></canvas></div><div id="legend" class="small muted"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="card-title"><div><h3>Ringkasan mengikut topik</h3><p>Gunakan analisis ini untuk menentukan fokus pengajaran seterusnya.</p></div></div><div class="table-wrap"><table><thead><tr><th>Topik</th><th>Direkod</th><th>Purata</th><th>Cemerlang</th><th>Perlu intervensi</th></tr></thead><tbody id="topicSummary"></tbody></table></div></div>
+ </section>
+ <section id="page-students" class="hidden">
+  <div class="card"><div class="student-head"><div><h3 style="margin:0 0 5px">Profil pencapaian individu</h3><p class="muted small" style="margin:0">Pilih pelajar untuk melihat pencapaian setiap topik dan fokus bimbingan.</p></div><div class="field student-select"><label for="studentSelect">Nama pelajar</label><select id="studentSelect"></select></div></div>
+   <div class="grid kpis" style="margin-top:18px"><div class="card"><div class="kpi-label">Markah SPMRSM rujukan</div><div class="kpi-value" id="studentBaseline">—</div></div><div class="card"><div class="kpi-label">Topik direkod</div><div class="kpi-value" id="studentCount">0</div></div><div class="card"><div class="kpi-label">Purata topik</div><div class="kpi-value" id="studentAvg">—</div></div><div class="card"><div class="kpi-label">Topik perlu intervensi</div><div class="kpi-value" id="studentWeak">0</div></div></div>
+   <div class="grid two-col"><div class="card"><div class="card-title"><div><h3>Graf penguasaan topik individu</h3><p>Bandingkan tahap pencapaian antara topik</p></div></div><div class="chart-wrap"><canvas id="studentChart"></canvas></div></div><div class="card"><div class="card-title"><div><h3>Cadangan fokus</h3><p>Keutamaan berdasarkan data yang direkod</p></div></div><div id="studentFocus" class="small"></div></div></div>
+   <div class="card" style="margin-top:14px"><div class="card-title"><div><h3>Butiran markah pelajar</h3><p>Markah, peratus dan tahap penguasaan setiap topik.</p></div><button id="editStudentBtn">Rekod markah pelajar ini</button></div><div class="table-wrap"><table><thead><tr><th>Kod</th><th>Topik</th><th>Penguasaan (%)</th><th>Peratus</th><th>Tahap</th></tr></thead><tbody id="studentTable"></tbody></table></div></div>
+   <div class="card" style="margin-top:14px" id="studentExamsCard">
+    <div class="card-title"><div><h3>Sejarah Ujian & Peperiksaan Pelajar</h3><p>Senarai ujian yang dicipta untuk kumpulan pelajar ini, termasuk yang belum dijawab.</p></div></div>
+    <div class="grid kpis" style="margin-bottom:14px"><div class="card"><div class="kpi-label">Jumlah ujian dijadualkan</div><div class="kpi-value" id="studentExamTotal">0</div></div><div class="card"><div class="kpi-label">Ujian ada markah</div><div class="kpi-value" id="studentExamDone">0</div></div><div class="card"><div class="kpi-label">Belum direkod</div><div class="kpi-value" id="studentExamPending">0</div></div><div class="card"><div class="kpi-label">Purata ujian direkod</div><div class="kpi-value" id="studentExamAverage">—</div></div></div>
+    <div class="table-wrap"><table><thead><tr><th>Bil.</th><th>Tarikh</th><th>Nama ujian / peperiksaan</th><th>Topik</th><th>Markah</th><th>Peratus</th><th>Status</th><th>Tindakan</th></tr></thead><tbody id="studentExamRows"></tbody></table></div>
+   </div>
+  </div>
+ </section>
+ <section id="page-topics" class="hidden">
+  <div class="card"><div class="card-title"><div><h3>Analisis penguasaan setiap topik</h3><p>Susunan mengikut purata pencapaian kelas.</p></div></div><div class="table-wrap"><table><thead><tr><th>Topik</th><th>Bil. direkod</th><th>Purata</th><th>Cemerlang</th><th>Baik</th><th>Memuaskan</th><th>Perlu intervensi</th></tr></thead><tbody id="topicDetails"></tbody></table></div></div>
+ </section>
+ <section id="page-marks" class="hidden">
+  <div class="notice">Masukkan markah ujian sebenar. Markah kosong dianggap belum direkod. Data hanya boleh disimpan selepas guru berjaya log masuk dan data pelajar dimuatkan daripada Supabase.</div>
+   <div class="card"><div class="card-title"><div><h3>Cipta ujian / latihan</h3><p>Tentukan topik dan markah maksimum bagi setiap ujian, bukan bagi setiap topik.</p></div></div>
+    <div class="form-grid"><div class="field"><label>Nama ujian / latihan</label><input id="assessmentName" placeholder="Contoh: Ujian Pengukuhan 1"></div><div class="field"><label>Tarikh</label><input id="assessmentDate" type="date"></div><div class="field"><label>Kumpulan</label><select id="assessmentClass"><option value="">Pilih kumpulan</option></select></div><div class="field"><label>Markah maksimum ujian</label><input id="assessmentMax" type="number" min="1" step="any" placeholder="Contoh: 60"></div></div>
+    <div style="margin-top:14px"><b>Topik terlibat (boleh pilih lebih daripada satu)</b><p class="small muted">Pilih topik Tingkatan 4 atau Tingkatan 5. Markah maksimum adalah untuk keseluruhan ujian.</p><div style="display:flex;gap:9px;flex-wrap:wrap;margin:12px 0"><button type="button" class="secondary" id="selectAllTopics">✓ Semua Topik Tingkatan 4 &amp; 5</button><button type="button" class="secondary" id="selectForm4">✓ Semua Topik Tingkatan 4</button><button type="button" class="secondary" id="selectForm5">✓ Semua Topik Tingkatan 5</button><button type="button" class="secondary" id="clearTopicSelection">Kosongkan pilihan</button></div><div id="assessmentTopics" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px"></div><p id="topicSelectionCount" class="small muted" aria-live="polite">0 topik dipilih.</p></div>
+    <div style="margin-top:14px"><button id="createAssessment">Cipta ujian</button><span id="createAssessmentMessage" class="small muted" style="margin-left:12px"></span></div>
+   </div>
+   <div class="card" style="margin-top:14px"><div class="card-title"><div><h3>Masukkan / Edit markah mengikut ujian</h3><p>Pilih ujian dan pelajar. Jika markah sudah wujud, nilainya akan dipaparkan untuk dikemas kini.</p></div></div>
+    <div class="form-grid"><div class="field"><label>Ujian</label><select id="entryAssessment"></select></div><div class="field"><label>Pelajar</label><select id="markStudent"></select></div><div class="field"><label>Markah diperoleh</label><input id="entryScore" type="number" min="0" step="any"></div></div>
+    <p id="entryInfo" class="small muted"></p><div id="existingMarkInfo" class="notice" style="display:none"></div><div style="display:flex;gap:8px;justify-content:flex-end"><button id="saveMarks">Simpan markah ujian</button></div><div id="saveMessage" class="small muted" style="margin-top:10px"></div>
+   </div>
+ </section>
+ <section id="page-intervention" class="hidden">
+  <div class="card"><div class="card-title"><div><h3>Senarai fokus intervensi</h3><p>Pelajar dan topik yang mendapat kurang daripada 50% berdasarkan rekod tersedia.</p></div></div><div class="table-wrap"><table><thead><tr><th>Pelajar</th><th>Topik</th><th>Markah</th><th>Peratus</th><th>Cadangan tindakan</th></tr></thead><tbody id="interventionTable"></tbody></table></div></div>
+ </section>
+ <section id="page-settings" class="hidden">
+  <div class="grid two-col"><div class="card"><div class="card-title"><div><h3>Tetapan penguasaan</h3><p>Ambang kategori boleh diselaraskan mengikut ketetapan jabatan.</p></div></div><div class="form-grid"><div class="field"><label>Cemerlang mulai (%)</label><input id="thresholdExcellent" type="number" min="0" max="100" value="85"></div><div class="field"><label>Baik mulai (%)</label><input id="thresholdGood" type="number" min="0" max="100" value="70"></div><div class="field"><label>Memuaskan mulai (%)</label><input id="thresholdSatisfactory" type="number" min="0" max="100" value="50"></div></div><button id="saveSettings" style="margin-top:14px">Simpan tetapan</button></div>
+  <div class="card"><div class="card-title"><div><h3>Import dan sandaran data</h3><p>Gunakan CSV untuk pemindahan data dan simpan salinan berkala.</p></div></div><div class="small muted" style="line-height:1.7">• Eksport CSV menyimpan rekod pelajar dan markah topik yang sedang berada dalam sistem.<br>• Import daripada Excel perlu menggunakan format templat yang dipersetujui.<br>• Untuk akses berbilang guru dan penyimpanan berpusat, konfigurasi Supabase diperlukan.</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="secondary" id="backupJson">Muat turun sandaran JSON</button><label class="secondary" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;cursor:pointer">Pulihkan JSON (dimatikan)<input type="file" id="restoreJson" accept=".json,application/json" hidden></label><button class="danger" id="resetDemo">Reset data (dimatikan)</button></div></div></div>
+  <div class="card" style="margin-top:14px"><div class="card-title"><div><h3>Status pangkalan data</h3><p>Panel ini memaparkan mod aplikasi semasa.</p></div></div><div id="databasePanel" class="small muted">Menunggu sambungan Supabase dan log masuk guru.</div></div>
+ </section>
+ <div class="footer">CHEMISTRY SPM 2026 · MRSM MUKAH · Smart Performance Monitoring System<br>Dashboard ini menyokong pemantauan; sahkan semua data dan ambang dengan rekod rasmi jabatan.</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const STUDENTS=["ALDRINA ANAK AHUNG", "ALYA AINA SHAKIRA BINTI AHMAD JAAFAR", "ARIANA NADHIRAH BINTI MOHAMAD RIZZAL", "CHELSEA OLIVIA BINTI ZAIDI", "DAYMIEADANESSA MIN JIMMY", "MARSHELLA ENTAYANG ANAK EMBAT", "NURASHIKIN RADZIS BINTI ABDULLAH", "OPHIELIA PRADA ANAK AUGUSTINE EDING", "PRISCA BINTI JUWAWI", "QANYSHA QIEZNILLY ANAK ATING", "SHERLY WONG", "AINA DANIELLA BINTI MOHAMMED KHAIRIL EDWARD", "ALMA RAISHA BINTI ABDUL RAHIM", "ANABELLA ROSE NIKIE BINTI NAZIP", "ANGELLYNNE SHARYN ANAK SIBAT", "ASNETHYSIA ELLYKA ANAK ASENG", "BATRISYA BALQIS BINTI MOHAMAD MOKHTADA", "FREDERIC AMBROSE ANAK ARICK", "MIA QALESYA BINTI MAJEDI", "NUR ATHIRAH NABILAH BINTI MOHAMAD FADHLULLAH", "OLIVEA ANAK SUBING", "RESHALYEN NGIAN ANAK BANDANG", "VANESSA RAISA BINTI ZAMRY", "AHMAD ZARKHISYI BIN JAILANI", "DANIESHA BINTI JEFFERY", "DARSAH ERYNA AZFAR BINTI FARIZAL", "ELISSARINA BINTI JEFFREY", "JESSY QUESHIRO BINTI DONNY", "JUSTINE ANAK JEFREY", "NUR ALLESSYA BINTI JUDIN"];
+const TOPICS=[{"code": "T2", "name": "Jirim dan Struktur Atom", "max": 100}, {"code": "T3", "name": "Konsep Mol, Formula dan Persamaan Kimia", "max": 100}, {"code": "T4", "name": "Jadual Berkala Unsur", "max": 100}, {"code": "T5", "name": "Ikatan Kimia", "max": 100}, {"code": "T6", "name": "Asid, Bes dan Garam", "max": 100}, {"code": "T7", "name": "Kadar Tindak Balas", "max": 100}, {"code": "T8", "name": "Bahan Buatan dalam Industri", "max": 100}, {"code": "T9", "name": "Keseimbangan Redoks", "max": 100}, {"code": "T10", "name": "Sebatian Karbon", "max": 100}, {"code": "T11", "name": "Termokimia", "max": 100}, {"code": "T12", "name": "Polimer", "max": 100}, {"code": "T13", "name": "Kimia Konsumer dan Industri", "max": 100}];
+const BASELINE=[30, 35, 35, 30, 30, 38, 27, 34, 31, 37, 26, 32, 34, 39, 37, 38, 38, 28, 36, 26, 26, 36, 39, 36, 39, 35, 34, 35, 39, 38];
+const STORAGE_KEY='chemistrySPM2026_POTENSI_v1';
+const CONFIG={supabaseUrl:localStorage.getItem('chem_supabase_url')||'https://ajqarkwvwggiojreuccb.supabase.co',supabaseAnonKey:localStorage.getItem('chem_supabase_key')||''};
+let db={students:[],marks:{},assessments:[],settings:{excellent:85,good:70,satisfactory:50}};
+let selectedStudent=STUDENTS[0];
+const $=id=>document.getElementById(id);
+function seed(){return {students:STUDENTS.map((name,i)=>({id:'p'+(i+1),name,baseline:BASELINE[i]??null,className:'POTENSI',form:'Tingkatan 5'})),marks:{},assessments:[],settings:{excellent:85,good:70,satisfactory:50}}}
+function load(){db={students:[],marks:{},assessments:[],settings:{excellent:85,good:70,satisfactory:50}};}
+function persist(){/* cloud-only: no personal student data saved in localStorage */}
+function key(s,t){return s+'|'+t}
+function getMark(s,t){const v=db.marks[key(s,t)];return v===undefined||v===null||v===''?null:Number(v)}
+function pct(s,t){const m=getMark(s,t);return m===null?null:m}
+function level(p){if(p===null||!Number.isFinite(p))return 'Belum direkod';if(p>=db.settings.excellent)return 'Cemerlang';if(p>=db.settings.good)return 'Baik';if(p>=db.settings.satisfactory)return 'Memuaskan';return 'Perlu intervensi'}
+function cls(l){return l==='Cemerlang'?'b-green':l==='Baik'?'b-blue':l==='Memuaskan'?'b-gold':l==='Perlu intervensi'?'b-red':''}
+function fmt(p){return p===null?'—':p.toFixed(1)+'%'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function allStudents(){return db.students.filter(s=>!$('classFilter')||$('classFilter').value==='SEMUA'||s.className===$('classFilter').value)}
+function stats(){let arr=[];for(const s of allStudents())for(const t of TOPICS){const p=pct(s.id,t.code);if(p!==null)arr.push({s,t,p,l:level(p)})}return arr}
+function topicStats(){return TOPICS.map(t=>{const vals=allStudents().map(s=>({s,p:pct(s.id,t.code)})).filter(x=>x.p!==null);return {...t,count:vals.length,avg:vals.length?vals.reduce((a,x)=>a+x.p,0)/vals.length:null,excellent:vals.filter(x=>level(x.p)==='Cemerlang').length,good:vals.filter(x=>level(x.p)==='Baik').length,satisfactory:vals.filter(x=>level(x.p)==='Memuaskan').length,weak:vals.filter(x=>level(x.p)==='Perlu intervensi').length}})}
+function populateSelects(){const opts=allStudents().map(s=>`<option value="${s.id}">${escapeHtml(s.name)}</option>`).join('');$('studentSelect').innerHTML=opts;$('markStudent').innerHTML=opts;if(!allStudents().some(s=>s.id===selectedStudent))selectedStudent=allStudents()[0]?.id||'';$('studentSelect').value=selectedStudent;$('markStudent').value=selectedStudent}
+function renderOverview(){const a=stats(),ts=topicStats();$('kpiStudents').textContent=allStudents().length;$('kpiRecords').textContent=a.length;$('kpiAverage').textContent=a.length?fmt(a.reduce((n,x)=>n+x.p,0)/a.length):'—';$('kpiIntervention').textContent=a.filter(x=>x.l==='Perlu intervensi').length;
+$('topicSummary').innerHTML=ts.map(t=>`<tr><td><b>${escapeHtml(t.code)}</b> · ${escapeHtml(t.name)}</td><td>${t.count}/${allStudents().length}</td><td>${fmt(t.avg)}</td><td>${t.excellent}</td><td><span class="badge b-red">${t.weak}</span></td></tr>`).join('');
+drawBars($('topicChart'),ts.map(t=>({label:t.code,value:t.avg??0})),100);drawPie($('pieChart'),[['Cemerlang',a.filter(x=>x.l==='Cemerlang').length,'#14866d'],['Baik',a.filter(x=>x.l==='Baik').length,'#2457d6'],['Memuaskan',a.filter(x=>x.l==='Memuaskan').length,'#e9bd58'],['Perlu intervensi',a.filter(x=>x.l==='Perlu intervensi').length,'#c94747']]);$('legend').innerHTML=['Cemerlang','Baik','Memuaskan','Perlu intervensi'].map((n,i)=>{const v=[a.filter(x=>x.l==='Cemerlang').length,a.filter(x=>x.l==='Baik').length,a.filter(x=>x.l==='Memuaskan').length,a.filter(x=>x.l==='Perlu intervensi').length][i];return `<span style="display:inline-block;margin:4px 10px 0 0">${n}: <b>${v}</b></span>`}).join('')}
+function renderStudent(){const s=db.students.find(x=>x.id===$('studentSelect').value)||db.students[0];if(!s)return;selectedStudent=s.id;const arr=TOPICS.map(t=>({t,p:pct(s.id,t.code),m:getMark(s.id,t.code),l:level(pct(s.id,t.code))}));const known=arr.filter(x=>x.p!==null);$('studentBaseline').textContent=s.baseline??'—';$('studentCount').textContent=known.length+'/'+TOPICS.length;$('studentAvg').textContent=known.length?fmt(known.reduce((a,x)=>a+x.p,0)/known.length):'—';$('studentWeak').textContent=known.filter(x=>x.l==='Perlu intervensi').length;
+$('studentTable').innerHTML=arr.map(x=>`<tr><td>${x.t.code}</td><td>${escapeHtml(x.t.name)}</td><td>${fmt(x.p)}</td><td>${fmt(x.p)}</td><td><span class="badge ${cls(x.l)}">${x.l}</span></td></tr>`).join('');
+drawBars($('studentChart'),arr.map(x=>({label:x.t.code,value:x.p??0})),100);
+const weak=known.filter(x=>x.p<db.settings.satisfactory).sort((a,b)=>a.p-b.p);renderStudentExams(s);$('studentFocus').innerHTML=known.length===0?'<p>Belum ada markah topik direkod.</p>':weak.length?`<p><b>${weak.length} topik memerlukan perhatian.</b> Utamakan topik berikut:</p><ol>${weak.map(x=>`<li style="margin:8px 0">${escapeHtml(x.t.name)} — <b>${fmt(x.p)}</b>. Ulang kaji konsep, latihan berfokus dan semakan selepas intervensi.</li>`).join('')}</ol>`:'<p class="badge b-green">Tiada topik di bawah ambang intervensi dalam rekod yang tersedia.</p><p>Teruskan latihan pengukuhan dan pantau konsistensi pencapaian.</p>'}
+function renderStudentExams(student){
+ const target=$('studentExamRows');if(!target)return;
+ const exams=db.assessments.filter(a=>a.class_id===student.class_id).sort((a,b)=>String(b.assessment_date||'').localeCompare(String(a.assessment_date||'')));
+ const entries=exams.map(a=>({a,mark:cloudMarkRows.find(m=>m.assessment_id===a.id&&m.student_id===student.id)}));
+ const completed=entries.filter(x=>x.mark&&x.mark.mark_obtained!==null&&x.mark.mark_obtained!==undefined);
+ $('studentExamTotal').textContent=entries.length;
+ $('studentExamDone').textContent=completed.length;
+ $('studentExamPending').textContent=entries.length-completed.length;
+ const percentages=completed.map(x=>100*Number(x.mark.mark_obtained)/Number(x.a.max_mark||x.mark.max_mark)).filter(Number.isFinite);
+ $('studentExamAverage').textContent=percentages.length?fmt(percentages.reduce((a,b)=>a+b,0)/percentages.length):'—';
+ target.innerHTML=entries.length?entries.map(({a,mark},i)=>{
+ const done=mark&&mark.mark_obtained!==null&&mark.mark_obtained!==undefined;
+ const max=Number(a.max_mark||mark?.max_mark);
+ const percent=done&&max>0?100*Number(mark.mark_obtained)/max:null;
+ const action=canEdit()?`<button type="button" class="secondary" data-edit-assessment="${escapeHtml(a.id)}" data-edit-student="${escapeHtml(student.id)}">${done?'Edit markah':'Isi markah'}</button>`:'—';
+ return `<tr><td>${i+1}</td><td>${escapeHtml(a.assessment_date||'—')}</td><td>${escapeHtml(a.assessment_name||'—')}</td><td style="white-space:normal;min-width:220px">${escapeHtml(a.topic_names||'—')}</td><td>${done?escapeHtml(mark.mark_obtained)+' / '+(Number.isFinite(max)?max:'—'):'—'}</td><td>${fmt(percent)}</td><td><span class="badge ${done?'b-green':'b-gold'}">${done?'Markah direkod':'Belum direkod'}</span></td><td>${action}</td></tr>`;
+ }).join(''):'<tr><td colspan="8" class="empty">Belum ada ujian dicipta untuk kumpulan pelajar ini.</td></tr>';
+}
+$('studentExamRows').addEventListener('click',e=>{
+ const btn=e.target.closest('[data-edit-assessment]');if(!btn||!canEdit())return;
+ switchPage('marks');$('entryAssessment').value=btn.dataset.editAssessment;
+ $('entryAssessment').dispatchEvent(new Event('change'));
+ $('markStudent').value=btn.dataset.editStudent;renderMarks();
+ $('entryScore').focus();
+});
+function renderTopics(){const ts=topicStats();$('topicDetails').innerHTML=ts.map(t=>`<tr><td><b>${t.code}</b> · ${escapeHtml(t.name)}</td><td>${t.count}</td><td>${fmt(t.avg)}</td><td>${t.excellent}</td><td>${t.good}</td><td>${t.satisfactory}</td><td>${t.weak}</td></tr>`).join('')}
+function renderMarks(){
+ const aid=$('entryAssessment').value, a=db.assessments.find(x=>x.id===aid);
+ $('entryInfo').textContent=a?`Topik: ${a.topic_names||'—'} · Markah maksimum: ${a.max_mark}`:'Pilih ujian yang telah dicipta.';
+ $('entryScore').max=a?.max_mark||'';
+ const existing=cloudMarkRows.find(m=>m.assessment_id===aid&&m.student_id===$('markStudent').value);
+ $('entryScore').value=existing?existing.mark_obtained:'';
+ const info=$('existingMarkInfo');
+ info.style.display=existing?'block':'none';
+ info.textContent=existing?`Rekod sedia ada: ${existing.mark_obtained} / ${a?.max_mark ?? existing.max_mark}. Ubah markah di atas dan klik Kemas kini markah.`:'';
+ $('saveMarks').textContent=existing?'Kemas kini markah':'Simpan markah baharu';
+}
+
+function renderInterventions(){const a=stats().filter(x=>x.l==='Perlu intervensi').sort((x,y)=>x.p-y.p);$('interventionTable').innerHTML=a.length?a.map(x=>`<tr><td>${escapeHtml(x.s.name)}</td><td>${x.t.code} · ${escapeHtml(x.t.name)}</td><td>${fmt(x.p)}</td><td><span class="badge b-red">${fmt(x.p)}</span></td><td>Latihan berfokus, bimbingan guru dan penilaian semula.</td></tr>`).join(''):'<tr><td colspan="5" class="empty">Belum ada rekod intervensi. Rekod markah topik untuk mengaktifkan analisis.</td></tr>'}
+function renderAll(){populateSelects();renderOverview();renderStudent();renderTopics();renderMarks();renderInterventions();$('thresholdExcellent').value=db.settings.excellent;$('thresholdGood').value=db.settings.good;$('thresholdSatisfactory').value=db.settings.satisfactory}
+function drawBars(canvas,data,max){const rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.max(280,rect.width),h=Math.max(220,rect.height);canvas.width=w*dpr;canvas.height=h*dpr;const c=canvas.getContext('2d');c.scale(dpr,dpr);c.clearRect(0,0,w,h);const left=42,right=12,top=12,bottom=38,pw=w-left-right,ph=h-top-bottom;c.font='11px Segoe UI';for(let tick=0;tick<=100;tick+=25){let y=top+ph-ph*tick/100;c.strokeStyle='#e8edf5';c.beginPath();c.moveTo(left,y);c.lineTo(w-right,y);c.stroke();c.fillStyle='#8492a8';c.fillText(tick+'%',4,y+4)}const gap=7,bw=Math.max(8,(pw-gap*(data.length-1))/data.length);data.forEach((d,i)=>{const x=left+i*(bw+gap),val=Math.max(0,Math.min(100,d.value||0)),bh=ph*val/100,y=top+ph-bh;const grad=c.createLinearGradient(0,y,0,top+ph);grad.addColorStop(0,'#39c6e8');grad.addColorStop(1,'#2457d6');c.fillStyle=grad;c.beginPath();c.roundRect?c.roundRect(x,y,bw,bh,4):c.rect(x,y,bw,bh);c.fill();c.fillStyle='#53637c';c.textAlign='center';c.fillText(d.label,x+bw/2,h-17);if(d.value!==null){c.fillStyle='#17243b';c.font='10px Segoe UI';if(bw>18)c.fillText(Math.round(val)+'%',x+bw/2,Math.max(top+10,y-4));c.font='11px Segoe UI'}})}
+function drawPie(canvas,items){const rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.max(280,rect.width),h=Math.max(220,rect.height);canvas.width=w*dpr;canvas.height=h*dpr;const c=canvas.getContext('2d');c.scale(dpr,dpr);c.clearRect(0,0,w,h);const total=items.reduce((a,x)=>a+x[1],0);if(!total){c.fillStyle='#7b8aa2';c.font='13px Segoe UI';c.textAlign='center';c.fillText('Belum ada markah direkod',w/2,h/2);return}const cx=w*.5,cy=h*.48,r=Math.min(w*.31,h*.39);let start=-Math.PI/2;items.forEach(it=>{const angle=it[1]/total*Math.PI*2;c.beginPath();c.moveTo(cx,cy);c.arc(cx,cy,r,start,start+angle);c.closePath();c.fillStyle=it[2];c.fill();start+=angle});c.beginPath();c.arc(cx,cy,r*.58,0,Math.PI*2);c.fillStyle='#fff';c.fill();c.fillStyle='#17243b';c.font='bold 22px Segoe UI';c.textAlign='center';c.fillText(total,cx,cy+2);c.font='11px Segoe UI';c.fillStyle='#70809a';c.fillText('rekod',cx,cy+19)}
+function switchPage(name){if(name==='marks'&&!canEdit()){alert('Menu ini memerlukan log masuk Admin atau Editor.');return;}document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.page===name));document.querySelectorAll('[id^="page-"]').forEach(s=>s.classList.toggle('hidden',s.id!=='page-'+name));const titles={overview:['Ringkasan Prestasi','Gambaran keseluruhan rekod markah Program POTENSI.'],students:['Profil Pelajar','Analisis pencapaian individu mengikut topik.'],topics:['Penguasaan Topik','Perbandingan pencapaian kelas bagi setiap topik.'],marks:['Rekod Markah','Masukkan markah ujian sebenar dan simpan rekod.'],intervention:['Pemantauan Intervensi','Senarai pelajar dan topik yang perlu diberi perhatian.'],settings:['Tetapan & Data','Urus ambang penguasaan dan sandaran rekod.']};$('pageTitle').textContent=titles[name][0];$('pageSub').textContent=titles[name][1];if(name==='students')renderStudent();if(name==='marks')renderMarks();if(name==='topics')renderTopics();if(name==='intervention')renderInterventions()}
+function download(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();URL.revokeObjectURL(a.href)}
+function exportCsv(){const rows=[['Pelajar','Kelas','Markah SPMRSM rujukan',...TOPICS.flatMap(t=>[t.code+' markah',t.code+' peratus',t.code+' tahap'])]];for(const s of allStudents())rows.push([s.name,s.className,s.baseline,...TOPICS.flatMap(t=>{const m=getMark(s.id,t.code),p=pct(s.id,t.code);return [m??'',p===null?'':p.toFixed(1)+'%',level(p)]})]);download('Chemistry_SPM_2026_POTENSI.csv','\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n'),'text/csv;charset=utf-8')}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchPage(b.dataset.page)));
+$('studentSelect').addEventListener('change',()=>{selectedStudent=$('studentSelect').value;renderStudent()});
+$('markStudent').addEventListener('change',renderMarks);$('entryAssessment').addEventListener('change',()=>{const a=db.assessments.find(x=>x.id===$('entryAssessment').value);if(a){const eligible=db.students.filter(s=>s.class_id===a.class_id);$('markStudent').innerHTML=eligible.map(s=>`<option value="${s.id}">${escapeHtml(s.name)}</option>`).join('')}renderMarks()});
+$('saveMarks').addEventListener('click',saveCloudMarks);
+ $('quickMarks').addEventListener('click',()=>{if(!canEdit()){alert('Sila log masuk sebagai Admin / Editor.');return;}switchPage('marks');document.querySelector('#page-marks').scrollIntoView({behavior:'smooth',block:'start'});});
+
+
+$('editStudentBtn').addEventListener('click',()=>{switchPage('marks');$('markStudent').value=selectedStudent;renderMarks()});
+$('saveSettings').addEventListener('click',()=>{if(!canEdit()){alert('Tetapan hanya boleh diubah oleh Admin / Editor.');return;}const e=Number($('thresholdExcellent').value),g=Number($('thresholdGood').value),s=Number($('thresholdSatisfactory').value);if(!(e<=100&&e>=g&&g>=s&&s>=0)){alert('Sila pastikan Cemerlang ≥ Baik ≥ Memuaskan dan nilai antara 0–100.');return}db.settings={excellent:e,good:g,satisfactory:s};persist();renderAll();alert('Tetapan penguasaan disimpan.')});
+$('exportCsv').addEventListener('click',exportCsv);$('printBtn').addEventListener('click',()=>window.print());$('refreshBtn').addEventListener('click',reloadCloud);
+$('classFilter').addEventListener('change',()=>{renderAll()});
+$('backupJson').addEventListener('click',()=>download('Sandaran_Chemistry_SPM_2026.json',JSON.stringify(db,null,2),'application/json'));
+$('restoreJson').addEventListener('change',e=>{alert('Import JSON dimatikan dalam mod awan untuk melindungi data.');e.target.value=''});
+$('resetDemo').addEventListener('click',()=>alert('Reset data awan dinyahaktifkan untuk keselamatan.'));
+
+let supa=null, cloudUser=null, cloudRole='viewer', cloudStudents=[], cloudTopics=[], cloudMarkRows=[];
+const cloudMsg=(msg)=>{$('cloudMessage').textContent=msg};
+function canEdit(){return !!cloudUser && ['admin','editor'].includes(cloudRole)}
+function updateRoleUI(){
+  const edit=canEdit();
+  document.querySelector('[data-page="marks"]').classList.toggle('hidden',!edit);
+  $('quickMarks').classList.toggle('hidden',!edit);
+  $('editStudentBtn').classList.toggle('hidden',!edit);
+  $('cloudLogout').classList.toggle('hidden',!cloudUser);
+  $('cloudEmail').closest('.field').classList.remove('hidden');
+  $('cloudPassword').closest('.field').classList.remove('hidden');
+  $('cloudConnect').classList.remove('hidden');
+  $('saveSettings').disabled=!edit;
+  for(const id of ['thresholdExcellent','thresholdGood','thresholdSatisfactory'])$(id).disabled=!edit;
+  if(!edit && document.querySelector('[data-page="marks"]').classList.contains('active'))switchPage('overview');
+}
+function createClient(){
+  const url=$('cloudUrl').value.trim(),keyVal=$('cloudKey').value.trim();
+  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(url)||!(keyVal.startsWith('sb_publishable_')||keyVal.startsWith('eyJ')))
+    throw Error('Masukkan Project URL dan Publishable Key / anon key yang sah.');
+  if(!window.supabase)throw Error('Pustaka Supabase tidak dimuatkan. Semak internet.');
+  if(!supa)supa=window.supabase.createClient(url,keyVal,{auth:{persistSession:false,autoRefreshToken:true,detectSessionInUrl:false}});
+  localStorage.setItem('chem_supabase_url',url);localStorage.setItem('chem_supabase_key',keyVal);
+}
+async function reloadCloud(){
+  try{
+    if(!supa)createClient();
+    cloudMsg('Memuatkan data daripada Supabase...');
+    const isEditor=canEdit();
+    const table=n=>isEditor?n:'chem_public_'+n;
+    const [classes,students,topics,marks,assessments,links,configs]=await Promise.all([
+      supa.from(table('classes')).select('*'),
+      supa.from(table('students')).select('*'),
+      supa.from(table('topics')).select('*'),
+      supa.from(table('marks')).select('*').limit(10000),
+      supa.from(table('assessments')).select('*'),
+      supa.from(table('assessment_topics')).select('*'),
+      supa.from(table('assessment_config')).select('*')
+    ]);
+    for(const result of [classes,students,topics,marks,assessments,links,configs])if(result.error)throw result.error;
+    const classMap=new Map((classes.data||[]).map(c=>[c.id,c.name]));
+    cloudStudents=students.data||[];cloudTopics=topics.data||[];
+    db.students=cloudStudents.filter(s=>s.active!==false).map(s=>({id:s.id,name:s.full_name,baseline:s.baseline_mark,class_id:s.class_id,className:normalizeClass(classMap.get(s.class_id)||'Tanpa kelas')}));
+    TOPICS.splice(0,TOPICS.length,...cloudTopics.filter(t=>t.active!==false).sort((a,b)=>(a.display_order||0)-(b.display_order||0)).map(t=>({id:t.id,code:t.topic_code,name:t.topic_name,max:100})));
+    cloudMarkRows=marks.data||[];
+    const linkMap=new Map();for(const l of links.data||[]){if(!linkMap.has(l.assessment_id))linkMap.set(l.assessment_id,[]);linkMap.get(l.assessment_id).push(l.topic_id)}
+    const topicName=new Map(cloudTopics.map(t=>[t.id,t.topic_name]));
+    const configMap=new Map((configs.data||[]).map(x=>[x.assessment_id,x.max_mark]));
+    db.assessments=(assessments.data||[]).map(a=>({...a,max_mark:configMap.get(a.id),topic_ids:linkMap.get(a.id)||[],topic_names:(linkMap.get(a.id)||[]).map(id=>topicName.get(id)).join(', ')}));
+    db.marks={};const sums=new Map();
+    for(const m of cloudMarkRows){const a=db.assessments.find(x=>x.id===m.assessment_id);if(!a||!Number(m.max_mark))continue;
+      for(const tid of a.topic_ids){const t=cloudTopics.find(x=>x.id===tid);if(!t)continue;const k=key(m.student_id,t.topic_code);if(!sums.has(k))sums.set(k,[]);sums.get(k).push(100*Number(m.mark_obtained)/Number(m.max_mark));}}
+    for(const [k,v] of sums)db.marks[k]=v.reduce((x,y)=>x+y,0)/v.length;
+    const groupSel=$('assessmentClass');groupSel.innerHTML='<option value="">Pilih kumpulan</option>';
+    for(const c of classes.data||[]){const o=document.createElement('option');o.value=c.id;o.textContent=c.name;groupSel.appendChild(o)}
+    $('assessmentTopics').innerHTML=TOPICS.map(t=>`<label style="border:1px solid #d7dfeb;padding:8px;border-radius:8px"><input type="checkbox" value="${t.id}"> ${escapeHtml(t.code)} · ${escapeHtml(t.name)}</label>`).join('');
+     updateTopicSelectionCount();
+    const prevAssessment=$('entryAssessment').value;
+    $('entryAssessment').innerHTML='<option value="">Pilih ujian</option>'+db.assessments.map(a=>`<option value="${a.id}">${escapeHtml(a.assessment_name)} (${a.assessment_date||'Tiada tarikh'})</option>`).join('');
+    if(db.assessments.some(a=>a.id===prevAssessment))$('entryAssessment').value=prevAssessment;
+    const sel=$('classFilter'),prev=sel.value;
+    sel.innerHTML='<option value="SEMUA">Semua kumpulan</option>';
+    for(const name of [...new Set(db.students.map(s=>s.className))].sort()){const o=document.createElement('option');o.value=name;o.textContent=name;sel.appendChild(o)}
+    sel.value=[...sel.options].some(o=>o.value===prev)?prev:'SEMUA';
+    renderAll();$('entryAssessment').dispatchEvent(new Event('change'));updateRoleUI();
+    const label=isEditor?cloudRole.toUpperCase():'VIEWER (tanpa login)';
+    $('connectionStatus').textContent='Supabase • '+label;
+    $('connectionStatus').classList.add('ok');
+    $('databasePanel').textContent='Data langsung Supabase • Mod '+label+'. '+(isEditor?'Kebenaran menulis mengikut polisi RLS.':'Bacaan sahaja; perubahan data tidak dibenarkan.');
+    cloudMsg(`Berjaya: ${db.students.length} pelajar, ${TOPICS.length} topik, ${(marks.data||[]).length} rekod markah. Mod ${label}.`);
+  }catch(e){cloudMsg('Gagal memuatkan data: '+e.message);$('connectionStatus').textContent='Sambungan gagal';updateRoleUI()}
+}
+function normalizeClass(n){const u=String(n||'').toUpperCase();if(u.includes('POTENSI'))return 'POTENSI';if(u.includes('INSPIRASI'))return 'INSPIRASI';if(u.includes('ASPIRASI'))return 'ASPIRASI';return n}
+async function viewerConnect(){
+  try{if(supa&&cloudUser){await supa.auth.signOut();supa=null}cloudUser=null;cloudRole='viewer';createClient();updateRoleUI();await reloadCloud()}
+  catch(e){cloudMsg(e.message)}
+}
+async function cloudConnect(){
+  try{
+    if(supa){await supa.auth.signOut();supa=null}
+    createClient();
+    const email=$('cloudEmail').value.trim(),password=$('cloudPassword').value;
+    if(!email||!password)throw Error('Masukkan e-mel dan kata laluan Admin / Editor.');
+    const {data,error}=await supa.auth.signInWithPassword({email,password});
+    if(error)throw error;
+    const p=await supa.from('user_profiles').select('active,role').eq('user_id',data.user.id).maybeSingle();
+    if(p.error||!p.data?.active||!['admin','editor'].includes(p.data.role))throw Error('Akaun tidak mempunyai kebenaran Admin / Editor.');
+    cloudUser=data.user;cloudRole=p.data.role;$('cloudPassword').value='';
+    updateRoleUI();await reloadCloud();
+  }catch(e){cloudMsg('Log masuk gagal: '+e.message);if(supa)await supa.auth.signOut();supa=null;cloudUser=null;cloudRole='viewer';updateRoleUI()}
+}
+async function createNewAssessment(){
+ const msg=$('createAssessmentMessage');
+ if(!canEdit()){msg.textContent='Log masuk sebagai Admin / Editor terlebih dahulu.';return}
+ const name=$('assessmentName').value.trim(),date=$('assessmentDate').value,classId=$('assessmentClass').value;
+ const maxText=$('assessmentMax').value.trim(),max=Number(maxText);
+ const topicIds=[...document.querySelectorAll('#assessmentTopics input:checked')].map(x=>x.value);
+ if(!name||!date||!classId||!maxText||!Number.isFinite(max)||max<=0||!topicIds.length){msg.textContent='Lengkapkan nama, tarikh, kumpulan, markah maksimum dan sekurang-kurangnya satu topik.';return}
+ if(name.length>180){msg.textContent='Nama ujian terlalu panjang (maksimum 180 aksara).';return}
+ const btn=$('createAssessment');btn.disabled=true;msg.textContent='Sedang menyimpan ujian...';
+ let createdId=null;
+ try{
+   const a=await supa.from('assessments').insert({assessment_name:name,assessment_date:date,class_id:classId,created_by:cloudUser.id}).select('id').single();
+   if(a.error)throw a.error;
+   createdId=a.data.id;
+   const l=await supa.from('assessment_topics').insert(topicIds.map(topic_id=>({assessment_id:createdId,topic_id})));
+   if(l.error)throw l.error;
+   const cfg=await supa.from('assessment_config').insert({assessment_id:createdId,max_mark:max});
+   if(cfg.error)throw cfg.error;
+   await reloadCloud();
+   if(!db.assessments.some(x=>x.id===createdId))throw Error('Ujian disimpan tetapi tidak dapat disahkan dalam senarai. Semak sambungan dan polisi akses.');
+   $('entryAssessment').value=createdId;$('entryAssessment').dispatchEvent(new Event('change'));
+   $('assessmentName').value='';$('assessmentMax').value='';
+   document.querySelectorAll('#assessmentTopics input:checked').forEach(x=>x.checked=false);updateTopicSelectionCount();
+   msg.textContent='✓ Ujian berjaya dicipta dan disahkan dalam senarai.';
+ }catch(e){msg.textContent='Ralat: '+e.message+(createdId?' Ujian mungkin sudah wujud sebahagiannya (ID: '+createdId+'). Semak senarai sebelum mencuba lagi supaya tiada pendua.':'')}
+ finally{btn.disabled=false}
+}
+async function saveCloudMarks(){
+ const msg=$('saveMessage');
+ if(!canEdit()){msg.textContent='Sila log masuk sebagai Admin atau Editor.';return}
+ const aid=$('entryAssessment').value,sid=$('markStudent').value;
+ const a=db.assessments.find(x=>x.id===aid),raw=$('entryScore').value.trim(),score=Number(raw);
+ if(!a||!sid||raw===''||!Number.isFinite(score)||score<0||score>Number(a.max_mark)){
+   msg.textContent='Pilih ujian dan pelajar serta masukkan markah sah.';return;
+ }
+ const existing=cloudMarkRows.find(m=>m.assessment_id===aid&&m.student_id===sid);
+ const topicId=a.topic_ids[0];
+ if(!topicId){msg.textContent='Ujian tiada topik.';return}
+ const button=$('saveMarks');button.disabled=true;
+ try{
+   let result;
+   if(existing){
+     result=await supa.from('marks').update({mark_obtained:score,max_mark:Number(a.max_mark)})
+       .eq('id',existing.id).select('id,mark_obtained');
+   }else{
+     result=await supa.from('marks').insert({student_id:sid,topic_id:topicId,assessment_id:aid,
+       mark_obtained:score,max_mark:Number(a.max_mark),recorded_by:cloudUser.id})
+       .select('id,mark_obtained');
+   }
+   if(result.error)throw result.error;
+   if(!result.data?.length)throw Error('Tiada rekod dikemas kini. Semak polisi RLS UPDATE dalam Supabase.');
+   // Verify the actual saved score, not merely an HTTP success.
+   const verified=await supa.from('marks').select('mark_obtained').eq('id',result.data[0].id).single();
+   if(verified.error)throw verified.error;
+   if(Number(verified.data.mark_obtained)!==score)throw Error('Markah yang disimpan tidak sepadan.');
+   await reloadCloud();
+   $('entryAssessment').value=aid;
+   $('entryAssessment').dispatchEvent(new Event('change'));
+   $('markStudent').value=sid;
+   renderMarks();
+   msg.textContent=existing?`✓ Markah berjaya dikemas kini kepada ${score}/${a.max_mark}.`:`✓ Markah baharu berjaya disimpan: ${score}/${a.max_mark}.`;
+ }catch(e){msg.textContent='Gagal menyimpan perubahan: '+e.message}
+ finally{button.disabled=false}
+}
+
+// Pemilihan pukal mengikut kod topik KSSM (T2–T8 = Tingkatan 4; T9–T13 = Tingkatan 5).
+function topicFormFromCode(code){const n=Number(String(code||'').match(/^T(\d+)$/i)?.[1]);return n>=2&&n<=8?4:n>=9&&n<=13?5:null}
+function selectTopicGroup(group){
+  const boxes=[...document.querySelectorAll('#assessmentTopics input[type="checkbox"]')];
+  for(const box of boxes){
+    const t=TOPICS.find(t=>String(t.id)===box.value);
+    const form=topicFormFromCode(t?.code);
+    box.checked=group==='all'||(group==='f4'&&form===4)||(group==='f5'&&form===5);
+  }
+  updateTopicSelectionCount();
+}
+function updateTopicSelectionCount(){
+  const boxes=[...document.querySelectorAll('#assessmentTopics input[type="checkbox"]')];
+  const count=boxes.filter(b=>b.checked).length;
+  $('topicSelectionCount').textContent=`${count} daripada ${boxes.length} topik dipilih. Anda masih boleh ubah pilihan satu per satu.`;
+}
+$('selectAllTopics').addEventListener('click',()=>selectTopicGroup('all'));
+$('selectForm4').addEventListener('click',()=>selectTopicGroup('f4'));
+$('selectForm5').addEventListener('click',()=>selectTopicGroup('f5'));
+$('clearTopicSelection').addEventListener('click',()=>selectTopicGroup('none'));
+$('assessmentTopics').addEventListener('change',updateTopicSelectionCount);
+
+$('createAssessment').addEventListener('click',createNewAssessment);
+$('viewerConnect').addEventListener('click',viewerConnect);
+$('cloudConnect').addEventListener('click',cloudConnect);
+$('cloudReload').addEventListener('click',reloadCloud);
+$('cloudLogout').addEventListener('click',viewerConnect);
+function init(){load();$('assessmentDate').value=new Date().toLocaleDateString('en-CA');renderAll();$('cloudUrl').value=CONFIG.supabaseUrl;$('cloudKey').value=CONFIG.supabaseAnonKey;$('connectionStatus').textContent='Viewer • belum disambungkan';$('databasePanel').textContent='Viewer boleh melihat data tanpa akaun selepas Publishable Key dimasukkan. Data pelajar tidak disimpan dalam peranti.';updateRoleUI();if(CONFIG.supabaseAnonKey)viewerConnect();}
+window.addEventListener('resize',()=>{renderOverview();renderStudent()});init();
+</script>
+</body></html>
